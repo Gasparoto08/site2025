@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
@@ -33,8 +33,8 @@
             </form>   
         </section>
 
+        <!-- Pergunta 2 -->
         <section>
-            <!-- Pergunta 2 -->
             <h2>Pergunta 2: Em uma região montanhosa, foi construído um teleférico conectando a base de uma montanha...</h2>
             <img src="questao2.webp" alt="">
             <form>
@@ -138,119 +138,86 @@
                 <label for="p9a">4/5</label><br>
                 <input type="radio" value="3/4" id="p9b" name="pergunta9">
                 <label for="p9b">3/4</label><br>
-                <input type="radio" value="1/2" id="p9c" name="pergunta9">
-                <label for="p9c">1/2</label><br>
+                <input type="radio" value="6/5" id="p9c" name="pergunta9">
+                <label for="p9c">6/5</label><br>
             </form>   
         </section>
 
         <!-- Pergunta 10 -->
         <section>
-            <h2>Pergunta 10: Calcule a medida do lado AC, sabendo que BC = 10 e o ângulo B é 30 graus.</h2>
+            <h2>Pergunta 10: Determine o valor do cateto oposto de um triângulo retângulo...</h2>
             <form>
-                <input type="radio" value="38m" id="p10a" name="pergunta10">
-                <label for="p10a">38m</label><br>
-                <input type="radio" value="30m" id="p10b" name="pergunta10">
-                <label for="p10b">30m</label><br>
-                <input type="radio" value="29m" id="p10c" name="pergunta10">
-                <label for="p10c">29m</label><br>
+                <input type="radio" value="15,7m" id="p10a" name="pergunta10">
+                <label for="p10a">15,7m</label><br>
+                <input type="radio" value="18,6m" id="p10b" name="pergunta10">
+                <label for="p10b">18,6m</label><br>
+                <input type="radio" value="20,3m" id="p10c" name="pergunta10">
+                <label for="p10c">20,3m</label><br>
             </form>   
         </section>
 
-        <!-- Tabela de pontuação -->
+        <!-- Resumo e resultado -->
         <section>
-            <h2>Tabela de Pontuação</h2>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Pontuação</th>
-                        <th>Avaliação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0-2</td>
-                        <td>Não desista! Cada tentativa é uma oportunidade de você aprender.</td>
-                    </tr>
-                    <tr>
-                        <td>3-6</td>
-                        <td>Parabéns! Você foi bem, mas pode melhorar.</td>
-                    </tr>
-                    <tr>
-                        <td>7-10</td>
-                        <td>Parabéns! Você é incrível.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Formulário de feedback -->
-        <section>
-            <h2>Nos dê o seu feedback</h2>
-            <fieldset>
-                <legend>Informações de contato</legend>
-                <form id="feedbackForm" action="https://formspree.io/f/mjkrydnl" method="POST">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="nome" required><br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="_replyto" required><br>
-                    <label for="comentario">Comentário:</label><br>
-                    <textarea id="comentario" name="comentario" rows="4" cols="50" placeholder="Digite seus comentários aqui" required></textarea><br>
-                    
-                    <!-- Campos ocultos para resultados do quiz -->
-                    <input type="hidden" id="campoAcertos" name="Acertos">
-                    <input type="hidden" id="campoErros" name="Erros">
-                    <input type="hidden" id="campoResumo" name="Resumo_das_respostas">
-
-                    <button type="submit">Envie o seu feedback</button>
-                </form>
-            </fieldset>
+            <button onclick="calcularResultado()">Enviar Respostas</button>
+            <div id="resultado"></div>
         </section>
     </main>
 
     <footer>
-        <p>Quiz de Razões Trigonométricas. Todos os direitos reservados.</p>
-        <p>Para conhecer outros quizzes <a href="https://google.com" target="_blank">clique aqui.</a></p>
+        <p>&copy; 2025 CEAK Quiz</p>
     </footer>
 
-    <!-- Link para o arquivo JavaScript -->
-    <script src="script.js"></script>
-
-    <!-- Atualização dos campos ocultos -->
     <script>
-        const form = document.getElementById('feedbackForm');
-        form.addEventListener('submit', function(event) {
-            const p1 = document.querySelector('input[name="pergunta1"]:checked');
-            const p2 = document.querySelector('input[name="pergunta2"]:checked');
-            const p3 = document.querySelector('input[name="pergunta3"]:checked');
-            const p4 = document.querySelector('input[name="pergunta4"]:checked');
-            const p5 = document.querySelector('input[name="pergunta5"]:checked');
-            const p6 = document.querySelector('input[name="pergunta6"]:checked');
-            const p7 = document.querySelector('input[name="pergunta7"]:checked');
-            const p8 = document.querySelector('input[name="pergunta8"]:checked');
-            const p9 = document.querySelector('input[name="pergunta9"]:checked');
-            const p10 = document.querySelector('input[name="pergunta10"]:checked');
-
+        function calcularResultado() {
             let acertos = 0;
             let erros = 0;
 
-            // Verificação de respostas corretas
+            // Pergunta 1
+            let p1 = document.querySelector('input[name="pergunta1"]:checked');
             if (p1 && p1.value === "7,54") acertos++; else erros++;
-            if (p2 && p2.value === "1200m") acertos++; else erros++;
-            if (p3 && p3.value === "14,6m") acertos++; else erros++;
-            if (p4 && p4.value === "5120m") acertos++; else erros++;
-            if (p5 && p5.value === "181,3") acertos++; else erros++;
-            if (p6 && p6.value === "21,86") acertos++; else erros++;
-            if (p7 && p7.value === "0,7837 e 52º") acertos++; else erros++;
-            if (p8 && p8.value === "AB=0,816b e BC=1,115b") acertos++; else erros++;
-            if (p9 && p9.value === "2√5/5") acertos++; else erros++;
-            if (p10 && p10.value === "38m") acertos++; else erros++;
 
-            // Atualização dos campos ocultos
-            document.getElementById('campoAcertos').value = acertos;
-            document.getElementById('campoErros').value = erros;
-            document.getElementById('campoResumo').value = `Acertos: ${acertos}, Erros: ${erros}`;
-        });
+            // Pergunta 2
+            let p2 = document.querySelector('input[name="pergunta2"]:checked');
+            if (p2 && p2.value === "1200m") acertos++; else erros++;
+
+            // Pergunta 3
+            let p3 = document.querySelector('input[name="pergunta3"]:checked');
+            if (p3 && p3.value === "14,6m") acertos++; else erros++;
+
+            // Pergunta 4
+            let p4 = document.querySelector('input[name="pergunta4"]:checked');
+            if (p4 && p4.value === "5120m") acertos++; else erros++;
+
+            // Pergunta 5
+            let p5 = document.querySelector('input[name="pergunta5"]:checked');
+            if (p5 && p5.value === "183,9m") acertos++; else erros++;
+
+            // Pergunta 6
+            let p6 = document.querySelector('input[name="pergunta6"]:checked');
+            if (p6 && p6.value === "21,86m") acertos++; else erros++;
+
+            // Pergunta 7
+            let p7 = document.querySelector('input[name="pergunta7"]:checked');
+            if (p7 && p7.value === "0,7837 e 52º") acertos++; else erros++;
+
+            // Pergunta 8
+            let p8 = document.querySelector('input[name="pergunta8"]:checked');
+            if (p8 && p8.value === "AB=0,816b e BC=1,115b") acertos++; else erros++;
+
+            // Pergunta 9
+            let p9 = document.querySelector('input[name="pergunta9"]:checked');
+            if (p9 && p9.value === "4/5") acertos++; else erros++;
+
+            // Pergunta 10
+            let p10 = document.querySelector('input[name="pergunta10"]:checked');
+            if (p10 && p10.value === "15,7m") acertos++; else erros++;
+
+            // Resultado sem mostrar as respostas corretas
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = `Você acertou ${acertos} de 10 questões.`;
+
+            // Se você quiser mostrar o resultado de maneira mais dinâmica, você pode adicionar um feedback de desempenho.
+        }
     </script>
 </body>
 </html>
-
